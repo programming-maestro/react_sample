@@ -23,6 +23,14 @@ function Header(props) {
     </parent>
   );
 }
+function Content({ app, year }) {
+  return (
+    <div>
+      <h1> {app} Application </h1>
+      <h3>Copyright {year} </h3>
+    </div>
+  );
+}
 
 
 function App() {
@@ -33,6 +41,8 @@ function App() {
       <main>
         <h1>Make your complex tasks easy with "DoIT"</h1>
       </main>
+
+      <Content app="DoIT" year={2025} />
     </div>
   );
 }
