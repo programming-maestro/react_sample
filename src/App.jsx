@@ -2,8 +2,8 @@ import "./App.css";
 
 let language = "JavaScript";
 let moon = "ú";
-function App() {
 
+function Header() {
   return (
     <parent>
       <h1>Hello React!</h1>
@@ -13,5 +13,20 @@ function App() {
     </parent>
   );
 }
+
+
+function App() {
+
+  return (
+    <div>
+      <Header />
+      <main>
+        <h1>Make your complex tasks easy with "DoIT"</h1>
+      </main>
+    </div>
+  );
+}
+
+
 
 export default App
