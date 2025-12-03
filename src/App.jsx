@@ -21,12 +21,15 @@ const itemObjects = items.map((cat, i) => ({
 }));
 // console.log(itemObjects)
 //child function
-function Main1({ categories }) {
+function Main1({ categories, openStatus, onStatus }) {
   /* Wrong practise, react recommend not to use this, it may produce rendering issue*/
+  /* Updating status through child component */
   return (
     <>
       <div>
-        <h2>Welcome to DoIt App</h2>
+        <h2>Welcome to DoIt {openStatus ? "OPEN" : "CLOSE"}</h2>
+
+        <button onClick={() => onStatus(true)}>I want to be open</button>
       </div>
       <main>
         <img src={taskImg} height={200} alt="Photo of app image"></img>
@@ -95,7 +98,7 @@ function App() {
       <button onClick={() => setStatus(!status)}>{status ? "Close" : "Open"} App</button>
       <Header name="Chetan" year={2025} />
       <Main categories={items} />
-      <Main1 categories={itemObjects} />
+      <Main1 categories={itemObjects} openStatus={status} onStatus={setStatus} />
       <Content app="DoIT" year={2025} />
     </div >
   );
