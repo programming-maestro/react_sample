@@ -1,5 +1,5 @@
 /* Note: Props are passed from parent function to child function. */
-
+import { useState } from "react"
 import "./App.css";
 import taskImg from "./images/images.png"
 
@@ -19,7 +19,7 @@ const itemObjects = items.map((cat, i) => ({
   id: i,
   title: cat
 }));
-console.log(itemObjects)
+// console.log(itemObjects)
 //child function
 function Main1({ categories }) {
   /* Wrong practise, react recommend not to use this, it may produce rendering issue*/
@@ -86,14 +86,18 @@ function Content({ app, year }) {
 
 // parent function
 function App() {
+  const [status, setStatus] = useState(true);
 
   return (
-    <div>
+
+    < div >
+      <h1> The app is {status ? "open" : "closed"}</h1>
+      <button onClick={() => setStatus(!status)}>{status ? "Close" : "Open"} App</button>
       <Header name="Chetan" year={2025} />
       <Main categories={items} />
       <Main1 categories={itemObjects} />
       <Content app="DoIT" year={2025} />
-    </div>
+    </div >
   );
 }
 
