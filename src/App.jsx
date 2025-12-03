@@ -1,5 +1,5 @@
 /* Note: Props are passed from parent function to child function. */
-import { useState } from "react"
+import { useState, useReducer } from "react"
 import "./App.css";
 import taskImg from "./images/images.png"
 
@@ -89,21 +89,19 @@ function Content({ app, year }) {
 
 // parent function
 function App() {
-  const [status, setStatus] = useState(true);
-
+  // const [status, setStatus] = useState(true);
+  const [status, toggle] = useReducer((status) => !status, true);
   return (
 
     < div >
       <h1> The app is {status ? "open" : "closed"}</h1>
-      <button onClick={() => setStatus(!status)}>{status ? "Close" : "Open"} App</button>
+      <button onClick={toggle}>{status ? "Close" : "Open"} App</button>
       <Header name="Chetan" year={2025} />
       <Main categories={items} />
-      <Main1 categories={itemObjects} openStatus={status} onStatus={setStatus} />
+      <Main1 categories={itemObjects} openStatus={status} onStatus={toggle} />
       <Content app="DoIT" year={2025} />
     </div >
   );
 }
-
-
 
 export default App
