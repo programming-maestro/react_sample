@@ -1,8 +1,48 @@
+/* Note: Props are passed from parent function to child function. */
+
 import "./App.css";
 
 let language = "JavaScript";
 let moon = "ú";
 
+const items = [
+
+  "Crutial/Urgent",
+  "Important",
+  "Move Ahead",
+  "Trivial/Delegate",
+
+];
+
+const itemObjects = items.map((cat, i) => ({
+  id: i,
+  title: cat
+}));
+console.log(itemObjects)
+//child function
+function Main1({ categories }) {
+  /* Wrong practise, react recommend not to use this, it may produce rendering issue*/
+  return (
+    <ul>
+      {categories.map((category) => (
+        <li key={category.id} style={{ listStyleType: "none" }}>{category.title}</li>
+      ))}
+    </ul>
+  );
+}
+
+function Main({ categories }) {
+  /* Wrong practise, react recommend not to use this, it may produce rendering issue*/
+  return (
+    <ul>
+      {categories.map((category, idx) => (
+        <li key={idx} style={{ listStyleType: "none" }}>{category}</li>
+      ))}
+    </ul>
+  );
+}
+
+// child function
 function Header(props) {
   return (
     <parent>
@@ -23,6 +63,8 @@ function Header(props) {
     </parent>
   );
 }
+
+// child function: Destructure the app & year properties directly in the function parameters.
 function Content({ app, year }) {
   return (
     <div>
@@ -32,16 +74,14 @@ function Content({ app, year }) {
   );
 }
 
-
+// parent function
 function App() {
 
   return (
     <div>
       <Header name="Chetan" year={2025} />
-      <main>
-        <h1>Make your complex tasks easy with "DoIT"</h1>
-      </main>
-
+      <Main categories={items} />
+      <Main1 categories={itemObjects} />
       <Content app="DoIT" year={2025} />
     </div>
   );
