@@ -1,6 +1,7 @@
 /* Note: Props are passed from parent function to child function. */
 
 import "./App.css";
+import taskImg from "./images/images.png"
 
 let language = "JavaScript";
 let moon = "ú";
@@ -23,11 +24,20 @@ console.log(itemObjects)
 function Main1({ categories }) {
   /* Wrong practise, react recommend not to use this, it may produce rendering issue*/
   return (
-    <ul>
-      {categories.map((category) => (
-        <li key={category.id} style={{ listStyleType: "none" }}>{category.title}</li>
-      ))}
-    </ul>
+    <>
+      <div>
+        <h2>Welcome to DoIt App</h2>
+      </div>
+      <main>
+        <img src={taskImg} height={200} alt="Photo of app image"></img>
+        <img src="https://github.com/programming-maestro.png" height={300} alt="Dynamic Image of my profile pic from GitHub"></img>
+        <ul>
+          {categories.map((category) => (
+            <li key={category.id} style={{ listStyleType: "none" }}>{category.title}</li>
+          ))}
+        </ul>
+      </main>
+    </>
   );
 }
 
